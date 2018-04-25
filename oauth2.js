@@ -7,8 +7,8 @@ export default {
     console.log('正在创建access_token')
     return http.post('oauth/token', querystring.stringify({
       grant_type: 'one_time',
-      client_id: '63b17e04-24f0-4a49-8d4d-44b91ad946df',
-      client_secret: '',
+      client_id: Config.oauth2.client_id,
+      client_secret: Config.oauth2.client_secret,
       one_time_token: oneTimeToken
     }))
   },
@@ -16,8 +16,8 @@ export default {
     console.log('正在refresh_token')
     return http.post('oauth/token', querystring.stringify({
       grant_type: 'refresh_token',
-      client_id: '63b17e04-24f0-4a49-8d4d-44b91ad946df',
-      client_secret: '',
+      client_id: Config.oauth2.client_id,
+      client_secret: Config.oauth2.client_secret,
       refresh_token: refreshToken
     }))
   },
@@ -70,6 +70,7 @@ export default {
     Cookies.remove('oauth2.create_time')
   },
   redirectToAuthServer () {
+    // 记录路由
     // 如果是微信中打开，跳转到服务器进行微信登录
     let wechatLoginUrl = 'http://' + Config.server + '/user/login/wechat'
     window.location.href = wechatLoginUrl
