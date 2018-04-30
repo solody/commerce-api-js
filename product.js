@@ -8,7 +8,14 @@ export default {
   getBookingUnits (http, id) {
     return http.get('api/rest/views/booking-units/' + id + '?_format=json')
   },
-  searchProduct (http, keywords, type, page) {
-    return http.get('api/rest/views/product-search?_format=json&search_api_fulltext=' + keywords + '&page=' + page + '&type=' + type)
+  searchProduct (http, keyword, page, type) {
+    let urlStr = 'api/rest/views/product-search?_format=json'
+    if (keyword && keyword !== '') {
+      urlStr = urlStr + '&search_api_fulltext=' + keyword
+    }
+    if (type && type !== '') {
+      urlStr = urlStr + '&type=' + type
+    }
+    return http.get(urlStr)
   }
 }
