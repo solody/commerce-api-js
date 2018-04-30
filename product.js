@@ -9,7 +9,7 @@ export default {
     return http.get('api/rest/views/booking-units/' + id + '?_format=json')
   },
   searchProduct (http, keyword, page, type) {
-    let urlStr = 'api/rest/views/product-search?_format=json'
+    let urlStr = 'api/rest/views/product-search?_format=json&page=' + page
     if (keyword && keyword !== '') {
       urlStr = urlStr + '&search_api_fulltext=' + keyword
     }
