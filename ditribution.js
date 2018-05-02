@@ -8,5 +8,10 @@ export default {
     }
     if (upstreamDistributorId) data.upstream_distributor_id = upstreamDistributorId
     return http.post('api/rest/distribution/apply-for-distributor?_format=json', data)
+  },
+  applyPromoter (http, promoter) {
+    return http.post('api/rest/distribution/apply-promoter?_format=json', {
+      distributor_id: promoter
+    })
   }
 }
