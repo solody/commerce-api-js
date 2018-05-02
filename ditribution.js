@@ -13,5 +13,8 @@ export default {
     return http.post('api/rest/distribution/apply-promoter?_format=json', {
       distributor_id: promoter
     })
+  },
+  getLastPromoter (http) {
+    return http.get('api/rest/distribution/last-promoter?_format=json')
   }
 }
