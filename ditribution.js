@@ -16,5 +16,8 @@ export default {
   },
   getLastPromoter (http) {
     return http.get('api/rest/distribution/last-promoter?_format=json')
+  },
+  computeCommissionAmount (http, data) {
+    return http.post('api/rest/distribution/compute-commission-amount?_format=json', data)
   }
 }
