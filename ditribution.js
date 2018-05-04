@@ -24,5 +24,8 @@ export default {
     return http.post('api/rest/distribution/upload-distributor-logo/' + distributor + '?_format=json', {
       base64: base64Data
     })
+  },
+  updateDistributorSetting (http, distributor, setting) {
+    return http.post('api/rest/distribution/update-distributor-setting/' + distributor + '?_format=json', setting)
   }
 }
