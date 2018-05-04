@@ -19,5 +19,10 @@ export default {
   },
   computeCommissionAmount (http, data) {
     return http.post('api/rest/distribution/compute-commission-amount?_format=json', data)
+  },
+  uploadDistributorLogo (http, distributor, base64Data) {
+    return http.post('api/rest/distribution/upload-distributor-logo/' + distributor + '?_format=json', {
+      base64: base64Data
+    })
   }
 }
