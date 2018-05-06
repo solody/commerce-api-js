@@ -27,5 +27,8 @@ export default {
   },
   updateDistributorSetting (http, distributor, setting) {
     return http.post('api/rest/distribution/update-distributor-setting/' + distributor + '?_format=json', setting)
+  },
+  getDistributorReport (http, distributor) {
+    return http.get('api/rest/distribution/distributor-report/' + distributor + '?_format=json')
   }
 }
