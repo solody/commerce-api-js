@@ -1,3 +1,5 @@
+import QueryString from 'querystring'
+
 export default {
   applyForDistributor (http, agent, upstreamDistributorId) {
     let data = {
@@ -30,5 +32,18 @@ export default {
   },
   getDistributorReport (http, distributor) {
     return http.get('api/rest/distribution/distributor-report/' + distributor + '?_format=json')
+  },
+  getDistributorCommissions (http, distributor, start, end) {
+    let queries = {}
+    if (start) {
+      queries['created[min]'] = start
+    }
+    if (end) {
+      queries['created[max]'] = end
+    }
+    let queriesString = QueryString.stringify(queries)
+    let rqUrl = 'api/rest/views/distribution/distributor-commissions/' + distributor + '?_format=json'
+    if (queriesString !== '') rqUrl += '&' + queriesString
+    return http.get(rqUrl)
   }
 }
