@@ -45,5 +45,14 @@ export default {
     let rqUrl = 'api/rest/views/distribution/distributor-commissions/' + distributor + '?_format=json'
     if (queriesString !== '') rqUrl += '&' + queriesString
     return http.get(rqUrl)
+  },
+  getPromotedOrders (http, distributor, start, end, state, keyword) {
+    return http.post('api/rest/aiqilv-distribution/distributor-orders?_format=json', {
+      distributor,
+      time_start: start,
+      time_end: end,
+      state,
+      keyword
+    })
   }
 }
