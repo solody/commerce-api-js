@@ -8,6 +8,15 @@ export default {
   clear (http, cart) {
     return http.delete('cart/' + cart + '/items?_format=json')
   },
+  removeCartItem (http, cartId, carItemId) {
+    return http.delete('/cart/' + cartId + '/items/' + carItemId + '?_format=json')
+  },
+  updateCartItem (http, cartId, carItemId, quantity) {
+    return http.patch('/cart/' + cartId + '/items/' + carItemId + '?_format=json', {quantity})
+  },
+  updateCartItems (http, cartId, data) {
+    return http.patch('/cart/' + cartId + '/items?_format=json', data)
+  },
   getCompleteOrder (http, id) {
     return http.get('api/rest/checkout/complete-order/' + id + '?_format=json')
   },
