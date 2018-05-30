@@ -2,6 +2,9 @@ export default {
   getProduct (http, id) {
     return http.get('api/rest/views/products/' + id + '?_format=json&status=1')
   },
+  getProducts (http, page, keyword) {
+    return http.get('api/rest/views/products/all?_format=json&status=1&page=' + page + '&title=' + keyword)
+  },
   getProductVariations (http, id) {
     return http.get('api/rest/views/product-variations/' + id + '?_format=json')
   },
