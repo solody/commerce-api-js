@@ -1,6 +1,10 @@
 export default {
-  getPromotionList (http, status) {
-    return http.get('api/rest/views/commerce-promotion/promotions?_format=json&status=' + status)
+  getPromotionList (http, hasCoupon, conditionType) {
+    let reqUrl = 'api/rest/commerce-promotion/query-promotions?_format=json'
+    return http.post(reqUrl, {
+      has_coupon: hasCoupon,
+      condition_type: conditionType
+    })
   },
   receiveCoupon (http, promotionId, userId) {
     return http.post('api/rest/commerce-promotion/receive-coupon?_format=json', {
