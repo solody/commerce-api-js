@@ -12,6 +12,16 @@ export default {
       one_time_token: oneTimeToken
     }))
   },
+  getNewOauth2TokenByAuthCode (http, AuthorizationCode) {
+    console.log('正在创建access_token')
+    return http.post('oauth/token', querystring.stringify({
+      grant_type: 'authorization_code',
+      client_id: Config.oauth2.client_id,
+      client_secret: Config.oauth2.client_secret,
+      code: AuthorizationCode,
+      redirect_uri: ''
+    }))
+  },
   refreshOauth2Token (http, refreshToken) {
     console.log('正在refresh_token')
     return http.post('oauth/token', querystring.stringify({
