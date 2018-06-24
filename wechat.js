@@ -38,5 +38,11 @@ export default {
       open_id: openId,
       phone
     })
+  },
+  createWechatPayment (http, gateway, cartId) {
+    return http.post('api/rest/wechat-pay/wechat-payment?_format=json', {
+      gateway,
+      cart_id: cartId
+    })
   }
 }
