@@ -20,10 +20,7 @@ export default {
   getCompleteOrder (http, id) {
     return http.get('api/rest/checkout/complete-order/' + id + '?_format=json')
   },
-  updateCompleteOrder (http, id, data) {
-    return http.patch('api/rest/checkout/complete-order/' + id + '?_format=json', data)
-  },
-  createPayment (http, id, data) {
-    return http.post('api/rest/checkout/complete-order/' + id + '/payment?_format=json', data)
+  updateOrder (http, id, data) {
+    return http.patch('admin/commerce/orders/' + id + '?_format=json', data)
   }
 }

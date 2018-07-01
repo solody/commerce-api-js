@@ -8,5 +8,14 @@ export default {
     let reqUrl = 'api/rest/views/orders/' + userId + '?_format=json&page=' + page
     if (state && state !== 'all') reqUrl += '&state=' + state
     return http.get(reqUrl)
+  },
+  getOrder (http, orderId) {
+    return http.get('admin/commerce/orders/' + orderId + '?_format=json')
+  },
+  setOrderBillingProfile (http, orderId, billingProfile) {
+    return http.post('api/rest/commerce-order/set-order-billing-profile?_format=json', {
+      order_id: orderId,
+      billing_profile: billingProfile
+    })
   }
 }

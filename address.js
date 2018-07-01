@@ -18,6 +18,6 @@ export default {
     return http.get('profile/' + addressId + '?_format=json')
   },
   getAddressList (http, userId, status) {
-    return http.get('api/rest/views/commerce-checkout-api/customer-profiles/' + userId + '?_format=json&status=' + status)
+    return http.get('api/rest/views/commerce-order/customer-profiles/' + userId + '?_format=json&status=' + status)
   }
 }
