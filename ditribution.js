@@ -1,4 +1,6 @@
 import QueryString from 'querystring'
+import Url from 'url'
+import * as Cookies from 'tiny-cookie'
 
 export default {
   applyForDistributor (http, agent, upstreamDistributorId) {
@@ -54,5 +56,20 @@ export default {
       state,
       keyword
     })
+  },
+  handlePromoterQueryValue () {
+    let currentUrl = Url.parse(window.location.href)
+    if (QueryString.parse(currentUrl.query).promoter) {
+      console.log('setting promoter cookies!')
+      Cookies.set('user.promoter', QueryString.parse(currentUrl.query).promoter)
+      // 去掉url中的参数
+      let queryObject = QueryString.parse(currentUrl.query)
+      delete queryObject.promoter
+
+      let qsValue = QueryString.stringify(queryObject) === '' ? '' : '?' + QueryString.stringify(queryObject)
+      let newUrl = currentUrl.protocol + '//' + currentUrl.host + '/' + qsValue + currentUrl.hash
+
+      window.history.replaceState(null, null, newUrl)
+    }
   }
 }
