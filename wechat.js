@@ -17,11 +17,13 @@ export default {
   },
   handleAuthorizationCodeRedirect (next) {
     let currentUrl = Url.parse(window.location.href)
-    console.log(currentUrl)
     let query = QueryString.parse(currentUrl.query)
     if (query.code && query.state) {
       window.history.replaceState(null, null, currentUrl.protocol + '//' + currentUrl.host + '/' + currentUrl.hash)
       next(query.state + '/wechat/' + query.code)
+      return true
+    } else {
+      return false
     }
   },
   connectDrupal (http, clientId, appId, authCode) {
