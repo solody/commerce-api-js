@@ -17,5 +17,13 @@ export default {
       order_id: orderId,
       billing_profile: billingProfile
     })
+  },
+  setOrderContactInfo (http, orderId, contactData) {
+    return http.post('api/rest/order-contact/set-order-contact-info?_format=json', {
+      order_id: orderId,
+      contact_name: contactData.name,
+      contact_phone: contactData.phone,
+      contact_remark: contactData.remark
+    })
   }
 }
