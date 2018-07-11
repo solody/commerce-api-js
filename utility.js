@@ -24,16 +24,13 @@ export default {
       return order.order_items[0].purchased_entity[0]
     }
   },
-  getProductFromCompleteOrder (order) {
-    return this.getVaritionFromCompleteOrder(order).product_id[0]
-  },
   getOrderProductTitle (order) {
-    return this.getFieldSingleValue(this.getProductFromCompleteOrder(order), 'title')
+    return order.order_items[0]._product.name
   },
   getOrderVariationTitle (order) {
     return this.getFieldSingleValue(this.getVaritionFromCompleteOrder(order), 'title')
   },
-  getFormatedPrice (price) {
+  getFormattedPrice (price) {
     if (price) {
       return '¥' + Math.round(price.number * 100) / 100
     } else {
