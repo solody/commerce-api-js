@@ -11,14 +11,22 @@ export default {
   getBookingUnits (http, id) {
     return http.get('api/rest/views/booking-units/' + id + '?_format=json')
   },
-  searchProduct (http, keyword, page, type) {
-    let urlStr = 'api/rest/views/product-search?_format=json&page=' + page
-    if (keyword && keyword !== '') {
-      urlStr = urlStr + '&search_api_fulltext=' + keyword
+  searchProduct (http, indexId, keywords, page, categories, type) {
+    let urlStr = 'api/rest/commerce-product/product-search?_format=json'
+    let searchOptions = {
+      index_id: indexId,
+      keywords: '',
+      page
+    }
+    if (keywords && keywords !== '') {
+      searchOptions.keywords = keywords
     }
     if (type && type !== '') {
-      urlStr = urlStr + '&type=' + type
+      searchOptions.product_type = type
     }
-    return http.get(urlStr)
+    if (categories.length) {
+      searchOptions.product_categories = categories
+    }
+    return http.post(urlStr, searchOptions)
   }
 }
