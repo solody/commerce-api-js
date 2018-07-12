@@ -11,6 +11,9 @@ export default {
   getBookingUnits (http, id) {
     return http.get('api/rest/views/booking-units/' + id + '?_format=json')
   },
+  getBookingUnitsByProduct (http, productId) {
+    return http.get('api/rest/views/booking-units-by-product/' + productId + '?_format=json')
+  },
   searchProduct (http, indexId, keywords, page, categories, type) {
     let urlStr = 'api/rest/commerce-product/product-search?_format=json'
     let searchOptions = {
