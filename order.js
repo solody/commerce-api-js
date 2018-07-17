@@ -1,7 +1,10 @@
 export default {
-  getList (http, userId, page, phone) {
+  getList (http, userId, page) {
     let reqUrl = 'api/rest/views/orders/' + userId + '?_format=json&page=' + page
-    if (phone) reqUrl += '&field_phone_value=' + phone
+    return http.get(reqUrl)
+  },
+  getListByPhone (http, phone, page) {
+    let reqUrl = 'api/rest/views/orders-by-phone/' + phone + '?_format=json&page=' + page
     return http.get(reqUrl)
   },
   getListByStatus (http, userId, page, state) {
