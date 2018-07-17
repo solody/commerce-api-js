@@ -32,7 +32,7 @@ export default {
   },
   getFormattedPrice (price) {
     if (price) {
-      return '¥' + Math.round(price.number * 100) / 100
+      return '¥' + (Math.round(price.number * 100) / 100).toFixed(2)
     } else {
       return ''
     }
