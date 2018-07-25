@@ -46,5 +46,30 @@ export default {
       gateway,
       cart_id: cartId
     })
+  },
+  launchMediaPlatformWechatPay (config, callback) {
+    let onBridgeReady = function () {
+      WeixinJSBridge.invoke( // eslint-disable-line
+        'getBrandWCPayRequest', {
+          'appId': config.appId,
+          'timeStamp': config.timeStamp,
+          'nonceStr': config.nonceStr,
+          'package': config.package,
+          'signType': config.signType,
+          'paySign': config.paySign
+        },
+        callback
+      )
+    }
+    if (typeof WeixinJSBridge === 'undefined') {
+      if (document.addEventListener) {
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false)
+      } else if (document.attachEvent) {
+        document.attachEvent('WeixinJSBridgeReady', onBridgeReady)
+        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady)
+      }
+    } else {
+      onBridgeReady()
+    }
   }
 }

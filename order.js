@@ -28,5 +28,11 @@ export default {
       contact_phone: contactData.phone,
       contact_remark: contactData.remark
     })
+  },
+  createNoneCartOrder (http, purchasedEntityType, purchasedItems) {
+    return http.post('api/rest/commerce-order/none-cart-order?_format=json', {
+      purchased_entity_type: purchasedEntityType,
+      purchased_items: purchasedItems
+    })
   }
 }
