@@ -70,6 +70,9 @@ export default {
       let newUrl = currentUrl.protocol + '//' + currentUrl.host + '/' + qsValue + currentUrl.hash
 
       window.history.replaceState(null, null, newUrl)
+      return true
+    } else {
+      return false
     }
   }
 }
