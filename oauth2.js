@@ -31,7 +31,7 @@ export default {
       refresh_token: refreshToken
     }))
   },
-  checkOauth2Token (http) {
+  checkOauth2Token (http, onRefreshTokenExpires) {
     // 检查Oauth2 token 是否过期，过期则刷新
     return new Promise((resolve, reject) => {
       let now = Math.round(new Date().getTime() / 1000)
@@ -50,7 +50,7 @@ export default {
             if (error.response.status === 401 && error.response.data.error === 'invalid_request') {
               console.log('refresh_token过期！')
               this.removeOauthCookies()
-              this.redirectToAuthServer()
+              onRefreshTokenExpires()
             }
           })
       } else {
