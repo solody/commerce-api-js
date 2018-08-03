@@ -71,5 +71,12 @@ export default {
     } else {
       onBridgeReady()
     }
+  },
+  getJSSDKConfig (http, appId, url, APIs) {
+    return http.post('api/rest/wechat_connect/js-sdk-config?_format=json', {
+      app_id: appId,
+      url,
+      apis: APIs
+    })
   }
 }
