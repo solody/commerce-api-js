@@ -32,7 +32,9 @@ export default {
   },
   getFormattedPrice (price) {
     if (price) {
-      return '¥' + (Math.round(price.number * 100) / 100).toFixed(2)
+      let str = ''
+      if (price.number < 0) str = '-'
+      return str + '¥' + Math.abs(Math.round(price.number * 100) / 100).toFixed(2)
     } else {
       return ''
     }
