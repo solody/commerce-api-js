@@ -34,5 +34,12 @@ export default {
       purchased_entity_type: purchasedEntityType,
       purchased_items: purchasedItems
     })
+  },
+  applyOrderTransition (http, orderId, fromState, transition) {
+    return http.post('api/rest/commerce-order/apply-order-transition?_format=json', {
+      order_id: orderId,
+      from_state: fromState,
+      transition
+    })
   }
 }
