@@ -1,8 +1,10 @@
 import QueryString from 'querystring'
 
 export default {
-  getWithdraws (http, userId, start, end) {
-    let queries = {}
+  getWithdraws (http, userId, start, end, page) {
+    let queries = {
+      page
+    }
     if (start) {
       queries['created[min]'] = start
     }

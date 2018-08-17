@@ -35,8 +35,10 @@ export default {
   getDistributorReport (http, distributor) {
     return http.get('api/rest/distribution/distributor-report/' + distributor + '?_format=json')
   },
-  getDistributorCommissions (http, distributor, start, end) {
-    let queries = {}
+  getDistributorCommissions (http, distributor, start, end, page) {
+    let queries = {
+      page
+    }
     if (start) {
       queries['created[min]'] = start
     }
