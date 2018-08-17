@@ -48,14 +48,19 @@ export default {
     if (queriesString !== '') rqUrl += '&' + queriesString
     return http.get(rqUrl)
   },
-  getPromotedOrders (http, distributor, start, end, state, keyword) {
-    return http.post('api/rest/aiqilv-distribution/distributor-orders?_format=json', {
+  getPromotedOrders (http, distributor, start, end, state, keyword, page) {
+    let params = {
       distributor,
-      time_start: start,
-      time_end: end,
-      state,
-      keyword
-    })
+      page: page
+    }
+    if (start && end) {
+      params.time_start = start
+      params.time_end = end
+    }
+    if (state) params.state = state
+    if (keyword) params.keyword = keyword
+
+    return http.post('api/rest/aiqilv-distribution/distributor-orders?_format=json', params)
   },
   handlePromoterQueryValue () {
     let currentUrl = Url.parse(window.location.href)
