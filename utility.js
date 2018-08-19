@@ -38,5 +38,14 @@ export default {
     } else {
       return ''
     }
+  },
+  getFormattedDatetime (moment, datetime) {
+    if (datetime) {
+      let datetimeString = datetime.value
+      let object = moment.utc(datetimeString).local()
+      return object.format('YYYY-MM-DD H:m:s')
+    } else {
+      return ''
+    }
   }
 }

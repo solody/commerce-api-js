@@ -81,5 +81,12 @@ export default {
     } else {
       return false
     }
+  },
+  queryDownstreamDistributors (http, distributor, page) {
+    let params = {
+      distributor,
+      page
+    }
+    return http.post('api/rest/distribution/query-downstream-distributors?_format=json', params)
   }
 }
