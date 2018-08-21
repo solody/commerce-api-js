@@ -2,6 +2,9 @@ import QueryString from 'querystring'
 import Url from 'url'
 
 export default {
+  isWechat () {
+    return window.navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1
+  },
   authorizeRedirect (appId, redirectPath) {
     let endpoint = 'https://open.weixin.qq.com/connect/oauth2/authorize'
 
