@@ -5,15 +5,17 @@ export default {
   isWechat () {
     return window.navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1
   },
-  authorizeRedirect (appId, redirectPath) {
+  authorizeRedirect (appId, redirectPath, scope) {
     let endpoint = 'https://open.weixin.qq.com/connect/oauth2/authorize'
+    let defaultScope = 'snsapi_userinfo'
+    if (scope) defaultScope = scope
 
     let currentUrl = Url.parse(window.location.href)
     let queryString = QueryString.stringify({
       appid: appId,
       redirect_uri: currentUrl.protocol + '//' + currentUrl.host + '/',
       response_type: 'code',
-      scope: 'snsapi_userinfo',
+      scope: defaultScope,
       state: redirectPath
     })
     window.location.href = endpoint + '?' + queryString + '#wechat_redirect'
