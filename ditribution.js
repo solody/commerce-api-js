@@ -88,5 +88,13 @@ export default {
       page
     }
     return http.post('api/rest/distribution/query-downstream-distributors?_format=json', params)
+  },
+  countDistributorDownstream (http, distributor, levelStart, levelEnd) {
+    let params = {
+      distributor,
+      level_start: levelStart,
+      level_end: levelEnd
+    }
+    return http.post('api/rest/distribution/count-distributor-downstream?_format=json', params)
   }
 }
