@@ -13,6 +13,21 @@ export default {
     if (upstreamDistributorId) data.upstream_distributor_id = upstreamDistributorId
     return http.post('api/rest/distribution/apply-for-distributor?_format=json', data)
   },
+  applyForLeader (http, distributor, leaderData) {
+    let data = {
+      distributor
+    }
+    if (leaderData) {
+      if (leaderData.name) data.name = leaderData.name
+      if (leaderData.phone) data.phone = leaderData.phone
+      if (leaderData.wechat) data.wechat = leaderData.wechat
+      if (leaderData.email) data.email = leaderData.email
+      if (leaderData.qq) data.qq = leaderData.qq
+      if (leaderData.apply_reason) data.apply_reason = leaderData.apply_reason
+      if (leaderData.address) data.address = leaderData.address
+    }
+    return http.post('api/rest/distribution/apply-for-leader?_format=json', data)
+  },
   applyPromoter (http, promoter) {
     return http.post('api/rest/distribution/apply-promoter?_format=json', {
       distributor_id: promoter
