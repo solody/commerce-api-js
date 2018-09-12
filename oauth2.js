@@ -59,11 +59,11 @@ export default {
     })
   },
   setOauth2Cookies (data) {
-    Cookies.set('oauth2.access_token', data.access_token)
-    Cookies.set('oauth2.expires_in', data.expires_in)
-    Cookies.set('oauth2.refresh_token', data.refresh_token)
-    Cookies.set('oauth2.token_type', data.token_type)
-    Cookies.set('oauth2.create_time', Math.round(new Date().getTime() / 1000))
+    Cookies.set('oauth2.access_token', data.access_token, { expires: '1M' })
+    Cookies.set('oauth2.expires_in', data.expires_in, { expires: '1M' })
+    Cookies.set('oauth2.refresh_token', data.refresh_token, { expires: '1M' })
+    Cookies.set('oauth2.token_type', data.token_type, { expires: '1M' })
+    Cookies.set('oauth2.create_time', Math.round(new Date().getTime() / 1000), { expires: '1M' })
   },
   haveOauthToken () {
     if (Cookies.get('oauth2.access_token')) {
