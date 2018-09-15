@@ -48,7 +48,7 @@ export default {
     return http.post('api/rest/distribution/update-distributor-setting/' + distributor + '?_format=json', setting)
   },
   getDistributorReport (http, distributor) {
-    return http.get('api/rest/distribution/distributor-report/' + distributor + '?_format=json')
+    return http.get('api/rest/distribution/distributor-report/' + distributor + '?_format=json&time=' + Math.round(new Date().getTime() / 1000))
   },
   getDistributorCommissions (http, distributor, start, end, page) {
     let queries = {
