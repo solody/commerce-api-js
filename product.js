@@ -31,5 +31,8 @@ export default {
       searchOptions.product_categories = categories
     }
     return http.post(urlStr, searchOptions)
+  },
+  getProductCategories (http) {
+    return http.get('api/rest/views/enhanced-product/product-categories?_format=json')
   }
 }
