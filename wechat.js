@@ -25,7 +25,7 @@ export default {
     let query = QueryString.parse(currentUrl.query)
     if (query.code && query.state) {
       window.history.replaceState(null, null, currentUrl.protocol + '//' + currentUrl.host + '/' + currentUrl.hash)
-      next(query.state + '/wechat/' + query.code)
+      next({path: query.state + '/wechat/' + query.code, replace: true})
       return true
     } else {
       return false
